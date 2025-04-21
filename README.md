@@ -55,7 +55,7 @@
 ## 🚀 快速啟動
 
 bash
-git clone https://github.com/你的帳號/EspressoPracticeApp.git
+git clone https://github.com/mobi1202/EspressoPracticeApp.git
 cd EspressoPracticeApp
 
 
