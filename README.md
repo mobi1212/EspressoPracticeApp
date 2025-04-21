@@ -31,14 +31,32 @@
 
 
 
-## 🧪 Espresso 測試規劃
+## 🧪 分支說明與測試策略
 
-本專案未內建測試檔案，建議依下列順序撰寫對應測試類別：
+本專案採用雙分支架構以利版本管理與開發測試：
 
-1. `LoginActivityTest` - 練習輸入與文字驗證
-2. `ListActivityTest` - 練習滾動、點選 RecyclerView
-3. `DetailActivityTest` - 驗證 Intent 是否帶值與顯示正確
-4. `CalculatorActivityTest` - 測試不同組合輸入與例外處理
+### 🔵 `main` 分支（正式版本）
+- **不含 Espresso 測試碼**
+- 適合發佈、打包上架或交付評測使用
+- 保持專案乾淨、體積小、專注於核心功能
+
+### 🧪 `Expresso_test` 分支（測試開發版）
+- **包含完整 Espresso UI 測試檔**
+  - MainActivityTest
+  - LoginActivityTest
+  - ListActivityTest
+  - DetailActivityTest
+  - CalculatorActivityTest
+  - AppFlowTest（整合流程測試）
+- 適合開發人員本地測試、自動化驗證、CI/CD 測試流程
+
+
+
+## 🚀 使用方式
+
+切換至測試版本：
+```bash
+git checkout Expresso_test
 
 
 
@@ -54,7 +72,7 @@
 
 ## 🚀 快速啟動
 
-bash
+```bash
 git clone https://github.com/mobi1202/EspressoPracticeApp.git
 cd EspressoPracticeApp
 
