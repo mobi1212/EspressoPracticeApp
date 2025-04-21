@@ -5,13 +5,13 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Button btnBack;
+    UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +21,14 @@ public class ListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         btnBack = findViewById(R.id.btn_back);
 
-        // 建立假資料
-        List<String> userList = new ArrayList<>();
-        for (int i = 1; i <= 20; i++) {
-            userList.add("使用者 " + i);
-        }
+        // 建立 Repository 與 Service
+        UserRepository repository = new RealUserRepository(); // 可換成 Fake
+        userService = new UserService(repository);
+
+        List<String> userList = userService.loadUsers();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        UserAdapter adapter = new UserAdapter(ListActivity.this, userList); // 傳入 context
+        UserAdapter adapter = new UserAdapter(this, userList); // 傳入 context
         recyclerView.setAdapter(adapter);
 
         btnBack.setOnClickListener(v -> finish());
