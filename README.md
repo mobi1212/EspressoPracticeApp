@@ -2,7 +2,8 @@
 
 
 
-### 📘 README.md 內容
+### 📘 `README.md`（最新版）
+
 
 # EspressoPracticeApp
 
@@ -12,77 +13,86 @@
 
 ## 🛠 專案特色
 
-- 使用 Java 開發，無需 Kotlin 知識即可上手
-- 每個畫面對應一種 Espresso 測試場景
-- 完整五個功能頁面 + 主畫面切換架構
-- 所有頁面皆有「返回主畫面」按鈕，方便測試整體流程
+- ✅ Java 編寫，無需 Kotlin 即可入門
+- ✅ 使用 Espresso 編寫完整 UI 測試
+- ✅ 模組化檔案架構，清楚分層
+- ✅ 所有頁面皆可透過主畫面導覽並返回
+- ✅ 支援 IdlingResource、RecyclerView、Intent 驗證等實用測試場景
 
 
+## 📱 頁面與功能說明
 
-## 📱 頁面列表與功能說明
-
-| 畫面名稱         | 功能概述                             | 對應測試主題             |
-|------------------|--------------------------------------|--------------------------|
-| MainActivity      | 三個按鈕導向 Login/List/Calculator   | Intent、跳頁驗證         |
-| LoginActivity     | 輸入帳密 → 驗證 → 顯示登入結果       | `typeText`、`check`      |
-| ListActivity      | RecyclerView 顯示使用者 → 點擊跳轉   | `RecyclerViewActions`    |
-| DetailActivity    | 顯示點擊的使用者名稱                 | `hasExtra`、`checkText`  |
-| CalculatorActivity| 輸入兩數並做加減乘除 → 顯示結果      | 邏輯運算、錯誤處理測試   |
+| 畫面名稱            | 功能概述                                  | 對應測試主題                     |
+|---------------------|-------------------------------------------|----------------------------------|
+| MainActivity         | 四個按鈕導向 Login/List/Calculator/Load   | Intent 跳轉、跳頁驗證             |
+| LoginActivity        | 輸入帳密後驗證並顯示登入結果             | `typeText`、`check`、表單驗證     |
+| ListActivity         | 顯示 RecyclerView，點擊項目開啟 Detail   | `RecyclerViewActions`、點擊測試  |
+| DetailActivity       | 顯示點擊使用者名稱                       | `Intent hasExtra`、資料驗證      |
+| CalculatorActivity   | 輸入兩數並做加減乘除 → 顯示結果          | 邏輯運算測試、錯誤處理           |
+| LoadActivity         | 模擬資料載入（2 項）+ ProgressBar 控制   | `IdlingResource` 等待測試        |
 
 
 
 ## 🧪 分支說明與測試策略
 
-本專案採用雙分支架構以利版本管理與開發測試：
+本專案採用雙分支架構以利版本管理與測試分離：
 
-### 🔵 `main` 分支（正式版本）
-- **不含 Espresso 測試碼**
-- 適合發佈、打包上架或交付評測使用
-- 保持專案乾淨、體積小、專注於核心功能
+### 🔵 `main` 分支（純功能版）
+- ❌ 不含任何 Espresso 測試碼
+- 適合打包上架或發佈展示
+- 專注於 UI 開發與功能驗證
 
-### 🧪 `Expresso_test` 分支（測試開發版）
-- **包含完整 Espresso UI 測試檔**
-  - MainActivityTest
-  - LoginActivityTest
-  - ListActivityTest
-  - DetailActivityTest
-  - CalculatorActivityTest
-  - AppFlowTest（整合流程測試）
-- 適合開發人員本地測試、自動化驗證、CI/CD 測試流程
+### 🧪 `Expresso_test` 分支（測試版）
+- ✅ 包含所有 Espresso 測試檔案
+- 適合進行 CI/CD、自動測試與測試開發
+- 已涵蓋測試：
+  - `MainActivityTest`
+  - `LoginActivityTest`
+  - `ListActivityTest`
+  - `DetailActivityTest`
+  - `CalculatorActivityTest`
+  - `LoadActivityTest`（IdlingResource）
+  - `UserServiceTest`（Mock/Fake/Stub 單元測試）
+  - `AppFlowTest`（整合流程測試）
 
 
 
 ## 🚀 使用方式
 
 切換至測試版本：
+
 ```bash
 git checkout Expresso_test
+```
+
+執行專案：
+
+```bash
+git clone https://github.com/mobi1202/EspressoPracticeApp.git
+cd EspressoPracticeApp
+```
+
+然後用 Android Studio 開啟專案 → Build & Run 即可！
 
 
 
 ## 🧰 開發工具與版本
 
-- Android Studio Hedgehog+
-- Java 語言
-- Espresso 3.5.1
-- Min SDK 21
-- Gradle Wrapper 8.x
+| 工具名稱       | 版本說明         |
+|----------------|------------------|
+| Android Studio | Hedgehog+        |
+| 語言           | Java             |
+| 測試框架       | Espresso 3.5.1   |
+| Gradle         | Wrapper 8.x      |
+| 最低支援版本   | minSdk 21        |
 
 
 
-## 🚀 快速啟動
+## 📄 授權 License
 
-```bash
-git clone https://github.com/mobi1202/EspressoPracticeApp.git
-cd EspressoPracticeApp
-
-
-打開 Android Studio → 開啟專案 → Build & Run 即可！
+本專案僅供教學與測試練習用途，歡迎 fork、擴充與學習。請勿用於商業用途。
 
 
 
-## 📄 授權
-
-本專案僅供教學與練習用途，歡迎自由修改與擴充。
 
 
