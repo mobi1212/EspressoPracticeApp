@@ -28,12 +28,10 @@
 
         <!-- ✅ 預先註冊的頁面 -->
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ListActivity"
-            tools:ignore="Instantiatable" />
-        <activity android:name=".CalculatorActivity"
-            tools:ignore="Instantiatable" />
-        <activity android:name=".DetailActivity"
-            tools:ignore="Instantiatable" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".CalculatorActivity" />
+        <activity android:name=".DetailActivity" />
+        <activity android:name=".LoadActivity" />
 
     </application>
 
