@@ -25,4 +25,12 @@
         android:text="Calculator Page"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="載入模擬資料（IdlingResource）"
+        android:layout_marginTop="16dp" />
+
 </LinearLayout>
