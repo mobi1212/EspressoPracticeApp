@@ -1,4 +1,4 @@
-package com.example.espressopracticeapp;
+package com.example.espressopracticeapp.data;
 
 import java.util.ArrayList;
 import java.util.List;

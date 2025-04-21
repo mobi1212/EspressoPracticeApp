@@ -1,4 +1,6 @@
-package com.example.espressopracticeapp;
+package com.example.espressopracticeapp.service;
+
+import com.example.espressopracticeapp.data.UserRepository;
 
 import java.util.List;
 

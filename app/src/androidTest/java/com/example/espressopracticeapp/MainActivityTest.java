@@ -22,8 +22,8 @@ import org.junit.runner.RunWith;
 public class MainActivityTest {
 
     @Rule
-    public ActivityScenarioRule<MainActivity> activityRule =
-            new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule<com.example.espressopracticeapp.MainActivity> activityRule =
+            new ActivityScenarioRule<>(com.example.espressopracticeapp.MainActivity.class);
 
     @Before
     public void setUp() {
@@ -39,19 +39,25 @@ public class MainActivityTest {
     @Test
     public void testGoToLoginActivity() {
         onView(withId(R.id.btn_login)).perform(click());
-        intended(hasComponent(LoginActivity.class.getName()));
+        intended(hasComponent(com.example.espressopracticeapp.LoginActivity.class.getName()));
     }
 
     @Test
     public void testGoToListActivity() {
         onView(withId(R.id.btn_list)).perform(click());
-        intended(hasComponent(ListActivity.class.getName()));
+        intended(hasComponent(com.example.espressopracticeapp.ListActivity.class.getName()));
     }
 
     @Test
     public void testGoToCalculatorActivity() {
         onView(withId(R.id.btn_calculator)).perform(click());
         intended(hasComponent(CalculatorActivity.class.getName()));
+    }
+
+    @Test
+    public void testGoToLoadActivity() {
+        onView(withId(R.id.btn_load)).perform(click());
+        intended(hasComponent(LoadActivity.class.getName()));
     }
 
     // === 返回按鈕測試 ===
@@ -68,6 +74,11 @@ public class MainActivityTest {
     @Test
     public void testCalculatorActivityBackToMain() {
         testBackNavigation(R.id.btn_calculator, R.id.btn_login);
+    }
+
+    @Test
+    public void testLoadActivityBackToMain() {
+        testBackNavigation(R.id.btn_load, R.id.btn_login); // 回來時確認主畫面的登入按鈕存在
     }
 
     // === 共用返回測試 Helper Function ===

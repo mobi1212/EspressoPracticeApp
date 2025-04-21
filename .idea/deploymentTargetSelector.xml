@@ -16,7 +16,7 @@
       <SelectionState runConfigName="MainActivityTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ListActivityTest">
+      <SelectionState runConfigName="test_loadActivityDisplaysDataAfterDelay()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

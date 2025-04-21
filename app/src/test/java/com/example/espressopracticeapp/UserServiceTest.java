@@ -7,11 +7,13 @@ import static org.mockito.Mockito.times; // ✅ 正確的
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import com.example.espressopracticeapp.data.UserRepository;
+import com.example.espressopracticeapp.service.UserService;
+
 import org.junit.Test;
 import org.mockito.verification.VerificationMode;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class UserServiceTest {

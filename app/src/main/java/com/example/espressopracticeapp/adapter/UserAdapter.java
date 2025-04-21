@@ -1,4 +1,4 @@
-package com.example.espressopracticeapp;
+package com.example.espressopracticeapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.espressopracticeapp.DetailActivity;
+import com.example.espressopracticeapp.R;
+
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {

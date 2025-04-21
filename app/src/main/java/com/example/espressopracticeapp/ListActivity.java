@@ -5,6 +5,12 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.espressopracticeapp.adapter.UserAdapter;
+import com.example.espressopracticeapp.data.RealUserRepository;
+import com.example.espressopracticeapp.data.UserRepository;
+import com.example.espressopracticeapp.service.UserService;
+
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {

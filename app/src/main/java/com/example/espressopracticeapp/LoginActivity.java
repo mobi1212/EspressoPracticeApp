@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText editUsername, editPassword;
