@@ -5,7 +5,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundcolor">
+    android:background="@color/backgroundcolor"
+    android:id="@+id/root_layout">
 
     <Button
         android:id="@+id/btn_login"
@@ -34,7 +35,7 @@
         android:text="載入模擬資料（IdlingResource）"
         android:layout_marginTop="16dp" />
     <Button
-        android:id="@+id/btn_pick_contact"
+        android:id="@+id/btn_WebIntent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="跳轉網頁"

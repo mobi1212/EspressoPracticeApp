@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnList = findViewById(R.id.btn_list);
         btnCalculator = findViewById(R.id.btn_calculator);
         btnLoad = findViewById(R.id.btn_load);
-        btnPickContact = findViewById(R.id.btn_pick_contact);
+        btnPickContact = findViewById(R.id.btn_WebIntent);
 
         btnLogin.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LoginActivity.class)));

@@ -13,10 +13,13 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="testPickContact()">
+      <SelectionState runConfigName="testBackgroundColor()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testLaunchWebIntent_andUpdateTextView()">
+      <SelectionState runConfigName="testWebIntentActivityBackToMain()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testLoadActivityBackToMain()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

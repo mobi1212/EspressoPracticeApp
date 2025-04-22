@@ -60,6 +60,12 @@ public class MainActivityTest {
         intended(hasComponent(LoadActivity.class.getName()));
     }
 
+    @Test
+    public void testGoToWebIntentActivity() {
+        onView(withId(R.id.btn_WebIntent)).perform(click());
+        intended(hasComponent(WebPageActivity.class.getName()));
+    }
+
     // === 返回按鈕測試 ===
     @Test
     public void testLoginActivityBackToMain() {
@@ -79,6 +85,17 @@ public class MainActivityTest {
     @Test
     public void testLoadActivityBackToMain() {
         testBackNavigation(R.id.btn_load, R.id.btn_login); // 回來時確認主畫面的登入按鈕存在
+    }
+
+    @Test
+    public void testWebIntentActivityBackToMain() {
+        testBackNavigation(R.id.btn_WebIntent, R.id.btn_login); // 回來時確認主畫面的登入按鈕存在
+    }
+
+    @Test
+    public void testBackgroundColor() {
+        onView(withId(R.id.root_layout))
+                .check(matches(CustomMatchers.withBackgroundColor("#A000BCD4")));
     }
 
     // === 共用返回測試 Helper Function ===
