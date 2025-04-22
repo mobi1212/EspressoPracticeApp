@@ -32,7 +32,7 @@
         <activity android:name=".CalculatorActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".LoadActivity" />
-
+        <activity android:name=".PickContactActivity"/>
     </application>
 
 </manifest>

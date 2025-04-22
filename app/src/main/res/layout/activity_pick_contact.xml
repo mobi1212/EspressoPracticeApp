@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_pick_contact"
+        android:text="選擇聯絡人"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_selected_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="你選擇的聯絡人將顯示在這裡"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:text="返回主畫面"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>
