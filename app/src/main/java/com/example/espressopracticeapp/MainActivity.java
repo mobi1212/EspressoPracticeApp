@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLogin, btnList, btnCalculator, btnLoad;
+    Button btnLogin, btnList, btnCalculator, btnLoad,btnPickContact;
+    private static final int PICK_CONTACT_REQUEST = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnList = findViewById(R.id.btn_list);
         btnCalculator = findViewById(R.id.btn_calculator);
         btnLoad = findViewById(R.id.btn_load);
+        btnPickContact = findViewById(R.id.btn_pick_contact);
 
         btnLogin.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LoginActivity.class)));
@@ -28,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         btnCalculator.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, CalculatorActivity.class)));
-
         btnLoad.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LoadActivity.class)));
+        btnPickContact.setOnClickListener(view ->
+                startActivity(new Intent(MainActivity.this, PickContactActivity.class)));
+
     }
 }

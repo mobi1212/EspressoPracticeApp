@@ -32,5 +32,11 @@
         android:layout_height="wrap_content"
         android:text="載入模擬資料（IdlingResource）"
         android:layout_marginTop="16dp" />
+    <Button
+        android:id="@+id/btn_pick_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="選擇聯絡人"
+        android:layout_marginTop="16dp"/>
 
 </LinearLayout>
