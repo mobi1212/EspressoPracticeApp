@@ -31,16 +31,18 @@ jobs:
         run: ./gradlew assembleAndroidTest
 
       - name: Install required system image
-        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-31;google_apis;arm64-v8a"
+        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-31;google_apis;x86_64"
 
       - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
           target: google_apis
-          arch: arm64-v8a  # 使用 ARM 架構
+          arch: x86_64
           profile: pixel
           script: |
+            echo "Starting Emulator..."
             adb wait-for-device
             adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'
+            echo "Emulator is ready, running tests..."
             ./gradlew connectedDebugAndroidTest
