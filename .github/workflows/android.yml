@@ -30,6 +30,9 @@ jobs:
       - name: Build Android Test APK
         run: ./gradlew assembleAndroidTest
 
+      - name: Install required system image
+        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-31;google_apis;x86_64"
+
       - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -37,5 +40,8 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel
-          script: ./gradlew connectedDebugAndroidTest
+          script: |
+            adb wait-for-device
+            adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'
+            ./gradlew connectedDebugAndroidTest
 
