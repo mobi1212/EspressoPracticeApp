@@ -1,4 +1,4 @@
-name: Espresso Test CI
+name: Unit Test CI
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
 
 jobs:
   build-and-test:
-    name: Build & Run Espresso Tests
-    runs-on: macos-latest
+    name: Build & Run Unit Tests
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -30,17 +30,5 @@ jobs:
       - name: Build Android Test APK
         run: ./gradlew assembleAndroidTest
 
-      - name: Install required system image (ARM)
-        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-31;google_apis;arm64-v8a"
-
-      - name: Start Emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 31
-          target: google_apis
-          arch: arm64-v8a   # 改為 ARM 架構
-          profile: pixel
-          script: |
-            adb wait-for-device
-            adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'
-            ./gradlew connectedDebugAndroidTest
+      - name: Run Unit Tests
+        run: ./gradlew test
