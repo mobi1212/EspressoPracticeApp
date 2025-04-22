@@ -13,9 +13,8 @@
 
 ## 🛠 專案特色
 
-- ✅ Java 編寫，無需 Kotlin 即可入門
+- ✅ Java 編寫
 - ✅ 使用 Espresso 編寫完整 UI 測試
-- ✅ 模組化檔案架構，清楚分層
 - ✅ 所有頁面皆可透過主畫面導覽並返回
 - ✅ 支援 IdlingResource、RecyclerView、Intent 驗證等實用測試場景
 
@@ -39,12 +38,10 @@
 
 ### 🔵 `main` 分支（純功能版）
 - ❌ 不含任何 Espresso 測試碼
-- 適合打包上架或發佈展示
-- 專注於 UI 開發與功能驗證
+- 專注於 UI 跟功能開發
 
 ### 🧪 `Expresso_test` 分支（測試版）
 - ✅ 包含所有 Espresso 測試檔案
-- 適合進行 CI/CD、自動測試與測試開發
 - 已涵蓋測試：
   - `MainActivityTest`
   - `LoginActivityTest`
@@ -80,11 +77,11 @@ cd EspressoPracticeApp
 
 | 工具名稱       | 版本說明         |
 |----------------|------------------|
-| Android Studio | Hedgehog+        |
+| Android Studio | 21.0.4       |
 | 語言           | Java             |
 | 測試框架       | Espresso 3.5.1   |
-| Gradle         | Wrapper 8.x      |
-| 最低支援版本   | minSdk 21        |
+| Gradle         | Wrapper 8.10.2      |
+| 最低支援版本   | minSdk 29        |
 
 
 
