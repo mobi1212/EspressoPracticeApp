@@ -24,8 +24,8 @@
 | 畫面名稱            | 功能概述                                  | 對應測試主題                     |
 |---------------------|-------------------------------------------|----------------------------------|
 | MainActivity         | 四個按鈕導向 Login/List/Calculator/Load   | Intent 跳轉、跳頁驗證             |
-| LoginActivity        | 輸入帳密後驗證並顯示登入結果             | `typeText`、`check`、表單驗證     |
-| ListActivity         | 顯示 RecyclerView，點擊項目開啟 Detail   | `RecyclerViewActions`、點擊測試  |
+| LoginActivity        | 輸入帳密後驗證並顯示登入結果             | `typeText`       |
+| ListActivity         | 顯示 RecyclerView，點擊項目開啟 Detail   | `RecyclerViewActions`    |
 | DetailActivity       | 顯示點擊使用者名稱                       | `Intent hasExtra`、資料驗證      |
 | CalculatorActivity   | 輸入兩數並做加減乘除 → 顯示結果          | 邏輯運算測試、錯誤處理           |
 | LoadActivity         | 模擬資料載入（2 項）+ ProgressBar 控制   | `IdlingResource` 等待測試        |
