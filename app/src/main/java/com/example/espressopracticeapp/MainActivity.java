@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnLoad.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, LoadActivity.class)));
         btnPickContact.setOnClickListener(view ->
-                startActivity(new Intent(MainActivity.this, PickContactActivity.class)));
+                startActivity(new Intent(MainActivity.this, WebPageActivity.class)));
 
     }
 }
