@@ -2,7 +2,7 @@
 
 
 
-### 📘 `README.md`（最新版）
+### 📘 `README.md`
 
 
 # EspressoPracticeApp
@@ -87,7 +87,7 @@ cd EspressoPracticeApp
 
 ## 📄 授權 License
 
-本專案僅供教學與測試練習用途，歡迎 fork、擴充與學習。請勿用於商業用途。
+本專案供教學與測試練習用途，歡迎 fork、擴充與學習。
 
 
 
