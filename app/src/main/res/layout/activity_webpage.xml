@@ -5,37 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 按鈕：點擊開啟 Google 網頁 -->
     <Button
-        android:id="@+id/btn_open_webpage"
-        android:text="開啟 Google 網頁"
+        android:id="@+id/btn_open_web"
+        android:text="開啟 Google"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp" />
+        android:layout_height="wrap_content" />
 
-    <!-- 顯示網頁標題的 TextView -->
     <TextView
-        android:id="@+id/text_webpage_info"
-        android:text="網頁標題"
+        android:id="@+id/text_result"
+        android:text=""
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- WebView：用來顯示網頁內容 -->
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_weight="1" />
-
-    <!-- 按鈕：返回主畫面 -->
     <Button
         android:id="@+id/btn_back"
         android:text="返回主畫面"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp" />
-
 </LinearLayout>
