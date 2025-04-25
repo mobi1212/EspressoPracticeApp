@@ -16,8 +16,10 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Button btnBack;
+    Button btnBack,btnReverse;
     UserService userService;
+
+    boolean isReversed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class ListActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         btnBack = findViewById(R.id.btn_back);
+        btnReverse = findViewById(R.id.btn_reverse);
 
         // 建立 Repository 與 Service
         UserRepository repository = new RealUserRepository(); // 可換成 Fake
@@ -38,5 +41,16 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         btnBack.setOnClickListener(v -> finish());
+        btnReverse.setOnClickListener(v -> {
+            if (isReversed) {
+                List<String> originalList = userService.resetToOriginalOrder();
+                adapter.updateData(originalList);
+                isReversed = false;
+            }else{
+                List<String> reversedList = userService.loadUsersReversed();
+                adapter.updateData(reversedList);
+                isReversed = true;
+            }
+        });
     }
 }

@@ -15,4 +15,13 @@ public class UserService {
     public List<String> loadUsers() {
         return repository.getAllUsers();
     }
+
+    public List<String> loadUsersReversed() {
+        return repository.getUsersReversed();
+    }
+
+    public List<String> resetToOriginalOrder() {
+        return repository.resetToOriginalOrder();
+    }
+
 }
