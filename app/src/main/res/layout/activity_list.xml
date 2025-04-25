@@ -12,6 +12,13 @@
         android:layout_weight="1"/>
 
     <Button
+        android:id="@+id/btn_reverse"
+        android:text="反轉列表"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <Button
         android:id="@+id/btn_back"
         android:text="返回主畫面"
         android:layout_width="match_parent"

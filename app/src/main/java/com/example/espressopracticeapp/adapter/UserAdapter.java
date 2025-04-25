@@ -1,5 +1,6 @@
 package com.example.espressopracticeapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -22,6 +23,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public UserAdapter(Context context, List<String> data) {
         this.context = context;
         this.data = data;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateData(List<String> reversedList) {
+        this.data = reversedList;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
