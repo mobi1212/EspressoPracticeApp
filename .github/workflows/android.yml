@@ -30,35 +30,27 @@ jobs:
       - name: Build Android Test APK
         run: ./gradlew assembleAndroidTest
 
-      - name: Start Android Emulator and Run Tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          profile: pixel_2  # 輕量，啟動快
-          disable-animations: true
-          emulator-options: "-no-window -no-audio -no-boot-anim"
-          working-directory: .
-          script: |
-            echo "List connected devices:"
-            adb devices
+      - name: Start Android Emulator
+        run: |
+          echo "Starting emulator manually..."
+          nohup $ANDROID_HOME/emulator/emulator -avd test -no-snapshot -no-window -gpu off -no-audio -no-boot-anim &
+          
+          echo "Waiting for emulator to appear..."
+          adb wait-for-device
 
-            echo "Waiting for emulator to be ready..."
-            adb -s emulator-5554 wait-for-device
+          echo "Waiting for emulator to finish booting..."
+          until adb shell getprop sys.boot_completed | grep -m 1 '1'; do
+            sleep 1
+          done
 
-            echo "Checking boot status..."
-            booted=$(adb -s emulator-5554 shell getprop sys.boot_completed | tr -d '\r')
-            while [[ "$booted" != "1" ]]; do
-              echo "Still booting..."
-              sleep 1
-              booted=$(adb -s emulator-5554 shell getprop sys.boot_completed | tr -d '\r')
-            done
+          echo "Emulator booted successfully. Sleeping additional 30s to ensure full readiness..."
+          sleep 30
 
-            echo "Emulator booted successfully!"
+      - name: Run Unit Tests
+        run: ./gradlew test
 
-            echo "Running connectedAndroidTest..."
-            ./gradlew connectedAndroidTest
+      - name: Run Instrumentation Tests
+        run: ./gradlew connectedAndroidTest
 
-            echo "Terminating emulator..."
-            adb -s emulator-5554 emu kill || true
+      - name: Terminate Emulator
+        run: adb emu kill || true
