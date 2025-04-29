@@ -30,20 +30,35 @@ jobs:
       - name: Build Android Test APK
         run: ./gradlew assembleAndroidTest
 
-      - name: Start Android Emulator
+      - name: Start Android Emulator and Run Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
           target: google_apis
           arch: x86_64
-          profile: pixel_2  # 輕量，改小一點
+          profile: pixel_2  # 輕量，啟動快
           disable-animations: true
           emulator-options: "-no-window -no-audio -no-boot-anim"
           working-directory: .
           script: |
+            echo "List connected devices:"
             adb devices
-            echo "Waiting for emulator to boot..."
+
+            echo "Waiting for emulator to be ready..."
             adb -s emulator-5554 wait-for-device
-            adb -s emulator-5554 shell 'while [[ $(getprop sys.boot_completed) != 1 ]]; do sleep 1; done;'
+
+            echo "Checking boot status..."
+            booted=$(adb -s emulator-5554 shell getprop sys.boot_completed | tr -d '\r')
+            while [[ "$booted" != "1" ]]; do
+              echo "Still booting..."
+              sleep 1
+              booted=$(adb -s emulator-5554 shell getprop sys.boot_completed | tr -d '\r')
+            done
+
             echo "Emulator booted successfully!"
+
+            echo "Running connectedAndroidTest..."
             ./gradlew connectedAndroidTest
+
+            echo "Terminating emulator..."
+            adb -s emulator-5554 emu kill || true
