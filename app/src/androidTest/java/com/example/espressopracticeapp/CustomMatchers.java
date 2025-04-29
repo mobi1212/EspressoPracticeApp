@@ -7,9 +7,7 @@ import androidx.test.espresso.matcher.BoundedMatcher;
 import org.hamcrest.Matcher;
 
 public class CustomMatchers {
-
     private static final String TAG = "CustomMatchers"; // 用來標註 Log 顯示的標籤
-
     public static Matcher<View> withBackgroundColor(final String color) {
         return new BoundedMatcher<View, View>(View.class) {
 
@@ -31,7 +29,7 @@ public class CustomMatchers {
                 }
                 Log.d(TAG, "Background is not a ColorDrawable");
                 return false;
-            }
+            }//檢查背景顏色
 
             @Override
             public void describeTo(org.hamcrest.Description description) {

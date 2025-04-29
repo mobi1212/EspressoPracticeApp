@@ -26,7 +26,8 @@ import org.junit.runner.RunWith;
 public class LoadActivityTest {
 
     private ActivityScenario<LoadActivity> scenario;
-    private static final CountingIdlingResource idlingResource = new CountingIdlingResource("load_tasks");
+    private static final CountingIdlingResource idlingResource =
+            new CountingIdlingResource("load_tasks");
 
     @Before
     public void setUp() {
@@ -51,10 +52,8 @@ public class LoadActivityTest {
         // 驗證文字與進度狀態
         onView(withId(R.id.text_user_name))
                 .check(matches(withText("使用者名稱：阿偉")));
-
         onView(withId(R.id.text_credit_score))
                 .check(matches(withText("信用評分：900")));
-
         onView(withId(R.id.progress_bar))
                 .check(matches(notVisible()));
     }

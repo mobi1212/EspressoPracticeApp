@@ -53,7 +53,6 @@ public class LoadActivity extends AppCompatActivity {
             idlingResource.increment(); // 使用者資訊
             idlingResource.increment(); // 信用評分
         }
-
         // 模擬載入使用者基本資料（2 秒）
         handler.postDelayed(() -> {
             textUserName.setText("使用者名稱：阿偉");
@@ -61,7 +60,6 @@ public class LoadActivity extends AppCompatActivity {
             if (idlingResource != null) idlingResource.decrement();
             checkAllTasksDone();
         }, 2000);
-
         // 模擬載入使用者信用評分（3 秒）
         handler.postDelayed(() -> {
             textCreditScore.setText("信用評分：900");

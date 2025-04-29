@@ -5,6 +5,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.*;
 
+import androidx.test.filters.SmallTest;
+
 import com.example.espressopracticeapp.data.UserRepository;
 import com.example.espressopracticeapp.service.UserService;
 
@@ -15,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@SmallTest
 public class UserServiceTest {
 
     // ✅ 1. Mock：檢查方法是否被呼叫
@@ -46,7 +49,6 @@ public class UserServiceTest {
     // ✅ 3. Fake：用自製的簡易版本實作資料邏輯
     public static class FakeUserRepository implements UserRepository {
         private final List<String> fakeData;
-
         public FakeUserRepository() {
             fakeData = new ArrayList<>();
             fakeData.add("假資料用戶1");
