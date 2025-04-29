@@ -55,7 +55,7 @@ jobs:
 
       - name: Upload Test Reports
         if: always()  # 無論成功或失敗都收集報告
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: |
