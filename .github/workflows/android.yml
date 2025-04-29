@@ -1,3 +1,4 @@
+name: Unit and UI Test CI
 on:
   push:
     branches: [ Expresso_test ]
