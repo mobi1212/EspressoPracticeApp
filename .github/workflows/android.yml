@@ -4,9 +4,7 @@ on: push: branches: [ Expresso_test ] pull_request: branches: [ Expresso_test ]
 
 jobs: build-and-test: name: Build, Unit Test, and UI Test runs-on: ubuntu-latest
 
-yaml
-複製
-編輯
+
 steps:
   - name: Checkout Repository
     uses: actions/checkout@v3
