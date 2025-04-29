@@ -21,6 +21,13 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          api-level: 30
+          target: default
+          ndk: false
+
       - name: Grant Permission to Gradlew
         run: chmod +x ./gradlew
 
@@ -36,10 +43,10 @@ jobs:
           nohup $ANDROID_HOME/emulator/emulator -avd test -no-snapshot -no-window -gpu off -no-audio -no-boot-anim &
           
           echo "Waiting for emulator to appear..."
-          adb wait-for-device
+          $ANDROID_HOME/platform-tools/adb wait-for-device
 
           echo "Waiting for emulator to finish booting..."
-          until adb shell getprop sys.boot_completed | grep -m 1 '1'; do
+          until $ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed | grep -m 1 '1'; do
             sleep 1
           done
 
@@ -53,4 +60,4 @@ jobs:
         run: ./gradlew connectedAndroidTest
 
       - name: Terminate Emulator
-        run: adb emu kill || true
+        run: $ANDROID_HOME/platform-tools/adb emu kill || true
