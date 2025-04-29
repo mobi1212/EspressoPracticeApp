@@ -1,4 +1,4 @@
-name: Unit Test CI
+name: Unit and UI Test CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build & Run Unit Tests
+    name: Build, Unit Test, and UI Test
     runs-on: ubuntu-latest
 
     steps:
@@ -32,3 +32,12 @@ jobs:
 
       - name: Run Unit Tests
         run: ./gradlew test
+
+      - name: Start Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: pixel_3
+          script: ./gradlew connectedAndroidTest
