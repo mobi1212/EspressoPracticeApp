@@ -1,27 +1,24 @@
-name: Unit and UI Test CI
-
-on: 
-  push: 
-    branches: [ Expresso_test ] 
-  pull_request: 
+on:
+  push:
+    branches: [ Expresso_test ]
+  pull_request:
     branches: [ Expresso_test ]
 
 jobs:
   build-and-test:
-    name: Build, Unit Test, and UI Test 
+    name: Build, Unit Test, and UI Test
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-    
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 17
-    
+
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
         with:
@@ -29,14 +26,17 @@ jobs:
           target: google_apis
           arch: x86_64
           ndk: false
-    
+
       - name: Grant Permission to Gradlew
         run: chmod +x ./gradlew
-    
+
       - name: Build Debug APK and Android Test APK
         run: ./gradlew :app:assembleDebug :app:assembleAndroidTest
-    
-      - name: Start Android Emulator
+
+      - name: Run Unit Tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Run Instrumentation Tests on Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -45,16 +45,10 @@ jobs:
           profile: pixel_2
           disable-animations: true
           emulator-options: "-no-window -no-audio -no-boot-anim -gpu swiftshader_indirect"
-    
-      - name: Wait for Emulator
-        run: adb wait-for-device
-    
-      - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest
-    
-      - name: Run Instrumentation Tests
-        run: ./gradlew connectedDebugAndroidTest
-    
+          script: |
+            adb wait-for-device
+            ./gradlew connectedDebugAndroidTest
+
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
