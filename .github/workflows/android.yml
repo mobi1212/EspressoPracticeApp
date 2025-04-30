@@ -9,6 +9,8 @@ jobs:
   build-and-test:
     name: Build, Unit Test, and UI Test
     runs-on: ubuntu-latest
+    env:  
+      ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 30
 
     steps:
       - name: Checkout Repository
