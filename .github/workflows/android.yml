@@ -39,7 +39,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
 
-      - name: Run Instrumentation Tests on Emulator
+      - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -48,9 +48,10 @@ jobs:
           profile: pixel_2
           disable-animations: true
           emulator-options: "-no-window -no-audio -no-boot-anim -gpu swiftshader_indirect"
-          script: |
-            adb wait-for-device
-            ./gradlew connectedDebugAndroidTest
+
+      - name: Run Instrumentation Tests
+        run: ./gradlew connectedDebugAndroidTest
+
 
       - name: Upload Test Reports
         if: always()
