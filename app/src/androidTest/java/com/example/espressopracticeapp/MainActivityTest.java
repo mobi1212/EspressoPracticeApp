@@ -66,7 +66,7 @@ public class MainActivityTest {
     @Test
     public void testGoToWebIntentActivity() {
         onView(withId(R.id.btn_WebIntent)).perform(click());
-        intended(hasComponent(WebPageActivity.class.getName()));
+        intended(hasComponent(DataRequestActivity.class.getName()));
     }
 
     // === 返回按鈕測試 ===
