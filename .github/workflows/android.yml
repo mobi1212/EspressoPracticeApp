@@ -48,6 +48,7 @@ jobs:
           profile: pixel_2
           disable-animations: true
           emulator-options: "-no-window -no-audio -no-boot-anim -gpu swiftshader_indirect"
+          script: echo "No-op"
 
       - name: Run Instrumentation Tests
         run: ./gradlew connectedDebugAndroidTest
