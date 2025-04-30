@@ -56,6 +56,7 @@ public class LoginActivityTest {
         onView(withId(R.id.text_result)).check(matches(withText("帳號或密碼錯誤")));
     }
 
+
     @Test
     public void test_loginEmptyFields() {
         onView(withId(R.id.edit_username)).perform(clearText());

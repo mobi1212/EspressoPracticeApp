@@ -79,6 +79,7 @@ public class CalculatorActivityTest {
         onView(withId(R.id.text_result)).check(matches(withText("除數不能為 0")));
     }
 
+
     @Test
     public void test_emptyInput() {
         onView(withId(R.id.edit_num1)).perform(clearText());

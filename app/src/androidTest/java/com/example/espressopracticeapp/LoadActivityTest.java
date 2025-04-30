@@ -29,6 +29,7 @@ public class LoadActivityTest {
     private static final CountingIdlingResource idlingResource =
             new CountingIdlingResource("load_tasks");
 
+
     @Before
     public void setUp() {
         scenario = ActivityScenario.launch(LoadActivity.class);

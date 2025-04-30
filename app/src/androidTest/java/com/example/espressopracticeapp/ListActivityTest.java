@@ -78,6 +78,7 @@ public class ListActivityTest {
         onView(withId(R.id.recycler_view))
                 .perform(actionOnItemAtPosition(position, click()));
 
+
         onView(withId(R.id.btn_back)).perform(click()); // 點返回按鈕
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed())); // 確認回到 ListActivity
     }

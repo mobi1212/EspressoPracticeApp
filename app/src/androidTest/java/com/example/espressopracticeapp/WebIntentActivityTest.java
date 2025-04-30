@@ -65,3 +65,4 @@ public class WebIntentActivityTest {
                 .check(matches(withText("模擬已完成，網頁應已開啟")));
     }
 }
+

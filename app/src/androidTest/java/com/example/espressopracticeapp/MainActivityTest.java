@@ -44,6 +44,7 @@ public class MainActivityTest {
         intended(hasComponent(com.example.espressopracticeapp.LoginActivity.class.getName()));
     }
 
+
     @Test
     public void testGoToListActivity() {
         onView(withId(R.id.btn_list)).perform(click());

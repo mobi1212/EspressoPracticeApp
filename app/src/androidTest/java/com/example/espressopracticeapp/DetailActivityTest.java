@@ -32,6 +32,7 @@ public class DetailActivityTest {
         Intent intent = new Intent();
         intent.putExtra("username", "使用者 5");
 
+
         scenario = ActivityScenario.launch(intent.setClassName(
                 "com.example.espressopracticeapp",
                 DetailActivity.class.getName()));
