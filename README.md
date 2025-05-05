@@ -29,7 +29,7 @@
 | DetailActivity       | 顯示點擊使用者名稱                       | `Intent hasExtra`、資料驗證      |
 | CalculatorActivity   | 輸入兩數並做加減乘除 → 顯示結果          | 邏輯運算測試、錯誤處理           |
 | LoadActivity         | 模擬資料載入（2 項）+ ProgressBar 控制   | `IdlingResource` 等待測試        |
-| WebPageActivity         | 點擊跳轉外部網站   | `Intent攔截`         |
+| DataRequestActivity         | 點擊跳LoadActivity   | `Intent攔截`         |
 
 
 
@@ -53,7 +53,7 @@
   - `LoadActivityTest`（IdlingResource）
   - `UserServiceTest`（Mock/Fake/Stub 單元測試）
   - `AppFlowTest`（整合流程測試）
-  -  `WebIntentActivityTest`
+  -  `DataRequestActivityTest`
   -  `CustomMatchers`
 -  test測試：
     -  `UserServiceTest`
