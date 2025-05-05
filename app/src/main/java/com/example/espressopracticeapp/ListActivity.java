@@ -18,8 +18,13 @@ public class ListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Button btnBack,btnReverse;
     UserService userService;
+    public static UserRepository injectedRepository = null;
 
     boolean isReversed = false;
+
+    public void setUserRepository(UserRepository repository) {
+        this.userService = new UserService(repository);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +35,14 @@ public class ListActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
         btnReverse = findViewById(R.id.btn_reverse);
 
-        // 建立 Repository 與 Service
-        UserRepository repository = new RealUserRepository(); // 可換成 Fake
-        userService = new UserService(repository);
-
-        List<String> userList = userService.loadUsers();
-
+        if (injectedRepository != null) {
+            setUserRepository(injectedRepository);
+        } else {
+            setUserRepository(new RealUserRepository());
+        }
+        List<String> userList = userService.loadUsers();//呼叫Repository.getAllUsers()取得資料
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        UserAdapter adapter = new UserAdapter(this, userList); // 傳入 context
+        UserAdapter adapter = new UserAdapter(this, userList); //傳入資料建立Adapter
         recyclerView.setAdapter(adapter);
 
         btnBack.setOnClickListener(v -> finish());

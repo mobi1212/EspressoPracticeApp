@@ -15,6 +15,8 @@ import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.idling.CountingIdlingResource;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.example.espressopracticeapp.util.GlobalIdlingResource;
+
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.After;
@@ -33,16 +35,12 @@ public class LoadActivityTest {
     @Before
     public void setUp() {
         scenario = ActivityScenario.launch(LoadActivity.class);
-        IdlingRegistry.getInstance().register(idlingResource);
-
-        scenario.onActivity(activity -> {
-            activity.setIdlingResource(idlingResource);
-        });
+        IdlingRegistry.getInstance().register(GlobalIdlingResource.networkIdling);
     }
 
     @After
     public void tearDown() {
-        IdlingRegistry.getInstance().unregister(idlingResource);
+        IdlingRegistry.getInstance().unregister(GlobalIdlingResource.networkIdling);
         scenario.close();
     }
 
@@ -50,7 +48,7 @@ public class LoadActivityTest {
     public void test_loadActivityDisplaysDataAfterDelay() {
         onView(withId(R.id.btn_start_load)).perform(click());
 
-        // 驗證文字與進度狀態
+        // 驗證資料顯示
         onView(withId(R.id.text_user_name))
                 .check(matches(withText("使用者名稱：阿偉")));
         onView(withId(R.id.text_credit_score))

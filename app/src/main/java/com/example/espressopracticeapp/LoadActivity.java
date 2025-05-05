@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.test.espresso.idling.CountingIdlingResource;
-
+import com.example.espressopracticeapp.util.GlobalIdlingResource;
 
 public class LoadActivity extends AppCompatActivity {
 
@@ -23,11 +23,9 @@ public class LoadActivity extends AppCompatActivity {
 
     private Handler handler = new Handler();
 
-    private CountingIdlingResource idlingResource;
 
-    public void setIdlingResource(CountingIdlingResource resource) {
-        this.idlingResource = resource;
-    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,22 +48,20 @@ public class LoadActivity extends AppCompatActivity {
         userInfoLoaded = false;
         creditScoreLoaded = false;
 
-        if (idlingResource != null) {
-            idlingResource.increment(); // 使用者資訊
-            idlingResource.increment(); // 信用評分
-        }
+        GlobalIdlingResource.networkIdling.increment();
+        GlobalIdlingResource.networkIdling.increment();
         // 模擬載入使用者基本資料（2 秒）
         handler.postDelayed(() -> {
             textUserName.setText("使用者名稱：阿偉");
             userInfoLoaded = true;
-            if (idlingResource != null) idlingResource.decrement();
+            GlobalIdlingResource.networkIdling.decrement();
             checkAllTasksDone();
         }, 2000);
         // 模擬載入使用者信用評分（3 秒）
         handler.postDelayed(() -> {
             textCreditScore.setText("信用評分：900");
             creditScoreLoaded = true;
-            if (idlingResource != null) idlingResource.decrement();
+            GlobalIdlingResource.networkIdling.decrement();
             checkAllTasksDone();
         }, 3000);
     }
@@ -80,7 +76,7 @@ public class LoadActivity extends AppCompatActivity {
                 result.putExtra("user_name", "阿偉");
                 result.putExtra("credit_score", 900);
                 setResult(RESULT_OK, result);
-                finish(); // ✅ 只有 WebPageActivity 呼叫時才會結束
+                finish();
             }
         }
     }

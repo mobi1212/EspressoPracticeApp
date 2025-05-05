@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.espressopracticeapp.LoginHandler;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -16,6 +16,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText editUsername, editPassword;
     Button btnLogin, btnBack;
     TextView textResult;
+    LoginHandler loginHandler = null;
+
+    public void setLoginHandler(LoginHandler handler) {
+        this.loginHandler = handler;
+    }
+    public LoginHandler getLoginHandler() {
+        return loginHandler;
+    }
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,11 +42,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user = editUsername.getText().toString();
                 String pass = editPassword.getText().toString();
-
-                if (user.equals("admin") && pass.equals("1234")) {
-                    textResult.setText("登入成功");
+                if (loginHandler != null) {
+                    loginHandler.login(user, pass); // 改為呼叫注入的 loginHandler
                 } else {
-                    textResult.setText("帳號或密碼錯誤");
+                    login(); // 沒有 handler 時使用預設邏輯
                 }
             }
         });
@@ -50,5 +57,16 @@ public class LoginActivity extends AppCompatActivity {
                 finish(); // 或用 startActivity(new Intent(...)) 也可以
             }
         });
+
+
+    }
+    public void login() {
+        String user = editUsername.getText().toString();
+        String pass = editPassword.getText().toString();
+        if (user.equals("admin") && pass.equals("1234")) {
+            textResult.setText("登入成功");
+        } else {
+            textResult.setText("帳號或密碼錯誤");
+        }
     }
 }

@@ -17,6 +17,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 @RunWith(AndroidJUnit4.class)
 public class LoginActivityTest {
@@ -63,5 +65,21 @@ public class LoginActivityTest {
         onView(withId(R.id.edit_password)).perform(clearText());
         onView(withId(R.id.btn_login)).perform(click());
         onView(withId(R.id.text_result)).check(matches(withText("帳號或密碼錯誤")));
+    }
+
+    @Test
+    public void testLoginButtonCallsLoginHandler() {
+        ActivityScenario<LoginActivity> scenario = ActivityScenario.launch(LoginActivity.class);
+
+        LoginHandler mockHandler = mock(LoginHandler.class);
+        scenario.onActivity(activity -> {
+            activity.setLoginHandler(mockHandler);
+        });
+
+        onView(withId(R.id.edit_username)).perform(typeText("admin"), closeSoftKeyboard());
+        onView(withId(R.id.edit_password)).perform(typeText("1234"), closeSoftKeyboard());
+        onView(withId(R.id.btn_login)).perform(click());
+
+        verify(mockHandler).login("admin", "1234");
     }
 }
